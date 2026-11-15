@@ -1,0 +1,403 @@
+/* A compact academic homepage with a single reading column. */
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("fonts/inter-latin-wght-normal.woff2") format("woff2");
+}
+
+:root {
+  color-scheme: light;
+  --page-background: #fafafa;
+  --text: #24272b;
+  --muted: #626872;
+  --link: #4b719f;
+  --link-hover: #365e8d;
+  --rule: #e3e5e8;
+  --focus: #315f94;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  font-synthesis: none;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--page-background);
+  scroll-behavior: smooth;
+  scroll-padding-top: 24px;
+}
+
+body {
+  margin: 0;
+  background: var(--page-background);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  color: #172b42;
+  background: #e0eaf5;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+  transition: color 150ms ease;
+}
+
+a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+p {
+  margin: 0.6em 0;
+}
+
+strong {
+  font-weight: 600;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.page-shell {
+  width: 100%;
+  max-width: 840px;
+  margin-inline: auto;
+  padding: 32px 20px 48px;
+}
+
+.skip-link {
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  z-index: 10;
+  padding: 8px 12px;
+  color: #fff;
+  background: #365e8d;
+  transform: translateY(-150%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+  color: #fff;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  gap: 36px;
+  align-items: center;
+  padding: 8px 0 24px;
+}
+
+.hero-copy {
+  min-width: 0;
+}
+
+.name {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 8px 12px;
+  margin: 0 0 20px;
+  color: #181b20;
+  font-size: clamp(35px, 5vw, 41px);
+  font-weight: 650;
+  letter-spacing: -0.8px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.name-cn {
+  display: inline-block;
+  color: #42464d;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.affiliation {
+  color: var(--muted);
+}
+
+.profile-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 4px 9px;
+  margin-top: 18px;
+  font-size: 13.5px;
+}
+
+.separator {
+  color: #8d9299;
+}
+
+.portrait {
+  position: relative;
+  width: 220px;
+  aspect-ratio: 1 / 1.12;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgb(0 0 0 / 5%);
+}
+
+.portrait > img {
+  /* Keep the subject left of center and show the hillside to his right. */
+  position: absolute;
+  top: -39%;
+  left: -51%;
+  width: 208%;
+  max-width: none;
+  height: auto;
+}
+
+.section {
+  padding: 19px 0;
+}
+
+.section-title {
+  display: inline-block;
+  margin: 0 0 12px;
+  padding-bottom: 5px;
+  color: #181b20;
+  border-bottom: 1.5px solid #dcdee2;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.research-intro {
+  margin-top: 0;
+}
+
+.news-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.news-list li {
+  margin: 6px 0;
+}
+
+.date {
+  margin-right: 5px;
+  color: #444a53;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.publication-list {
+  display: grid;
+  gap: 19px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.publication-note {
+  margin: 0 0 19px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.publication {
+  min-width: 0;
+  padding: 0 0 18px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.publication-title {
+  margin: 0 0 7px;
+  font-size: 15.5px;
+  font-weight: 600;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.publication p {
+  margin: 5px 0;
+}
+
+.authors,
+.venue,
+.paper-links {
+  font-size: 13.3px;
+  line-height: 1.65;
+}
+
+.authors {
+  color: #505660;
+}
+
+.self {
+  color: #292e35;
+  font-weight: 600;
+}
+
+.venue {
+  color: #333a44;
+}
+
+.distinction {
+  color: #915349;
+  font-weight: 600;
+}
+
+.paper-links {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 3px 9px;
+}
+
+.extra-publications {
+  margin-top: 12px;
+}
+
+.publication-disclosure {
+  width: fit-content;
+  max-width: 100%;
+  padding: 4px 0;
+  color: #52667f;
+  font-size: 13.5px;
+  cursor: pointer;
+  text-underline-offset: 3px;
+}
+
+.publication-disclosure:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+.publication-disclosure::marker {
+  color: #7b8898;
+  font-size: 11px;
+}
+
+.extra-publications[open] .publication-list {
+  margin-top: 18px;
+}
+
+.publication-count {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.compact-list,
+.teaching-list {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.compact-list li,
+.teaching-list li {
+  padding-left: 1px;
+  margin: 6px 0;
+}
+
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 9px 20px;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--rule);
+  color: #626872;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 13px;
+}
+
+@media (max-width: 700px) {
+  .page-shell {
+    padding: 27px 20px 36px;
+  }
+
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    padding-top: 3px;
+  }
+
+  .name {
+    margin-bottom: 20px;
+  }
+
+  .portrait {
+    width: min(65vw, 220px);
+    margin-inline: auto;
+  }
+
+  .section {
+    padding-block: 17px;
+  }
+}
+
+@media (max-width: 380px) {
+  .page-shell {
+    padding-inline: 18px;
+  }
+
+  .name {
+    font-size: 35px;
+  }
+
+  .name-cn {
+    font-size: 20px;
+  }
+
+  .profile-links {
+    gap: 4px 7px;
+    font-size: 13px;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  a {
+    transition: none;
+  }
+}

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zillionwong.github.io/sitemap.xml
