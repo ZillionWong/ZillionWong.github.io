@@ -25,8 +25,14 @@ Earlier publications use native HTML disclosure elements. The page does not requ
 
 ## Publishing
 
-GitHub Pages publishes the root of the `main` branch. Push changes to `main` to update the website. The `.nojekyll` file enables serving the static files directly.
+GitHub Pages publishes the root of the `main` branch in <https://github.com/ZillionWong/ZillionWong.github.io>. Push changes to `main` to update the website. The `.nojekyll` file enables serving the static files directly.
 
-When updating the CV, replace `assets/cv.pdf`. When replacing the photograph, update its dimensions in `index.html` and adjust its framing in `assets/site.css` as needed.
+The CV source and compiled PDF are maintained separately in `../cv/`. After updating `../cv/cv.pdf`, copy it to `assets/cv.pdf` to update the downloadable version on the website. From this directory in PowerShell:
+
+```powershell
+Copy-Item -LiteralPath '../cv/cv.pdf' -Destination 'assets/cv.pdf'
+```
+
+When replacing the photograph, update its dimensions in `index.html` and adjust its framing in `assets/site.css` as needed.
 
 Local archives are excluded from version control.
