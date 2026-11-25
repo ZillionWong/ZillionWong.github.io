@@ -17,7 +17,7 @@ Then visit <http://127.0.0.1:8000>. No build step or package installation is req
 - `index.html`: biography, research, publications, and service.
 - `assets/site.css`: typography and responsive layout.
 - `assets/portrait.jpg`: profile photograph.
-- `assets/cv.pdf` and `assets/cv-zh.pdf` contain the English and Chinese CVs.
+- `assets/cv_en.pdf` and `assets/cv_zh.pdf` contain the English and Chinese editions of the general CV.
 - `assets/fonts/`: locally hosted Inter font and its SIL Open Font License.
 - `assets/favicon.svg`: site icon.
 
@@ -27,11 +27,11 @@ Earlier publications use native HTML disclosure elements. The page does not requ
 
 GitHub Pages publishes the root of the `main` branch in <https://github.com/ZillionWong/ZillionWong.github.io>. Push changes to `main` to update the website. The `.nojekyll` file enables serving the static files directly.
 
-Maintain both CVs in `../cv/cv.tex`. The English and Chinese versions share the publication list and dates. Edit both arguments of `\cvtext{English}{中文}` when revising translated text, and update the corresponding homepage entry when it mentions the same information. Compile `cv.tex` (English) and `cv-zh.tex` (Chinese) with XeLaTeX from `../cv/` and verify both PDFs. From this directory, copy both PDFs into the site before publishing.
+The homepage serves the general CV. Compile `cv_en.tex` and `cv_zh.tex` with XeLaTeX from `../cv/general/` and check both PDFs. Update any matching publication or research details in `index.html`. From the homepage directory, copy the two general editions into the site before publishing.
 
 ```powershell
-Copy-Item -LiteralPath '../cv/cv.pdf' -Destination 'assets/cv.pdf'
-Copy-Item -LiteralPath '../cv/cv-zh.pdf' -Destination 'assets/cv-zh.pdf'
+Copy-Item -LiteralPath '../cv/general/cv_en.pdf' -Destination 'assets/cv_en.pdf'
+Copy-Item -LiteralPath '../cv/general/cv_zh.pdf' -Destination 'assets/cv_zh.pdf'
 ```
 
 When replacing the photograph, update its dimensions in `index.html` and adjust its framing in `assets/site.css` as needed.
